@@ -45,6 +45,11 @@ class Kohana_UUID {
 	const NIL = '00000000-0000-0000-0000-000000000000';
 
 	/**
+	 * @var  string  UUID matching regex
+	 */
+	const REGEX = '\{?[0-9a-fA-F]{8}\-?[0-9a-fA-F]{4}\-?[0-9a-fA-F]{4}\-?[0-9a-fA-F]{4}\-?[0-9a-fA-F]{12}\}?';
+
+	/**
 	 * Checks if a UUID has a valid format.
 	 *
 	 * @param   string  UUID
@@ -52,7 +57,7 @@ class Kohana_UUID {
 	 */
 	public static function valid($uuid)
 	{
-		return (preg_match('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $uuid) === 1);
+		return (preg_match('/^'.UUID::REGEX.'$/', $uuid) === 1);
 	}
 
 	/**
